@@ -1,16 +1,12 @@
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
-        ans=""
-        maxlen=0
-        count=0
+        ans = ""
+        maxlen = 0
         for i in s:
-            if i not in ans:
-                ans=ans+i
-                count+=1
-                maxlen=max(maxlen,count)
-            else:
-                count=0
-                ans=ans.replace(i,"")
+            if i in ans:
+                index = ans.index(i)
+                ans = ans[index + 1:]  
+            ans += i
+            maxlen = max(maxlen, len(ans))
         return maxlen
-
             
